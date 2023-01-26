@@ -1,3 +1,5 @@
 $(document).ready(function(){
-    $('.tabs').tabs();
-  });
+  $('.tabs').tabs();
+  $('.modal').modal();
+  $('.dropdown-trigger').dropdown();
+});
