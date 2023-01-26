@@ -1,0 +1,21 @@
+.tabs {
+    margin-top: 5px;
+}
+
+.nav-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.btn-floating {
+    position: absolute;
+    right: 2%;
+    top: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-dog {
+    filter: invert(100%);
+}
