@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
     <title>DogBytes</title>
 </head>
 
@@ -121,11 +124,16 @@
             <div id="test2" class="col s12">Test 2</div>
             <div id="test4" class="col s12">Test 4</div>
         </div>
+
+        
     </main>
+    <div id="map"></div>
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMvF_-po-_5NauKvu27lmuClGyHqgG9NU&callback=initMap" defer>
+</script>
     <script src="./assets/js/script.js"></script>
 </body>
 

@@ -19,3 +19,9 @@
 .add-dog {
     filter: invert(100%);
 }
+
+/* map size */
+#map {
+    height: 400px;
+    width: 100%; 
+  }
