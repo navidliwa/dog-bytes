@@ -1,20 +1,36 @@
 var products = [
   {
-    brandName: "Purina One (kibble)",
+    brandName: "Purina One Chicken and Rice (kibble)",
     threeToTwelve: 0.5,
-    thirteenToTwenty: 1,
-    twentyOneToThirtyFive: 1.5,
-    thirtySixToFifty: 2,
-    fiftyOneToSeventyFive: 3,
-    seventySixToOneHundred: 4,
+    thirteenToTwenty: 1.25,
+    twentyOneToThirtyFive: 1.75,
+    thirtySixToFifty: 2.5,
+    fiftyOneToSeventyFive: 3.25,
+    seventySixToOneHundred: 4.25,
   }, {
-    brandName: "Purina One (canned)",
-    threeToTwelve: 0.5,
-    thirteenToTwenty: 1,
-    twentyOneToThirtyFive: 1.5,
-    thirtySixToFifty: 2,
-    fiftyOneToSeventyFive: 3,
-    seventySixToOneHundred: 4,
+    brandName: "Purina One Beef and Brown Rice (canned)",
+    threeToTwelve: 0.75,
+    thirteenToTwenty: 1.25,
+    twentyOneToThirtyFive: 1.75,
+    thirtySixToFifty: 2.5,
+    fiftyOneToSeventyFive: 3.5,
+    seventySixToOneHundred: 4.5,
+  }, {
+    brandName: "Blue Buffalo Chicken Dinner (canned)",
+    threeToTwelve: 0.75,
+    thirteenToTwenty: 1.5,
+    twentyOneToThirtyFive: 2.25,
+    thirtySixToFifty: 3.25,
+    fiftyOneToSeventyFive: 5.25,
+    seventySixToOneHundred: 6.5,
+  }, {
+    brandName: "Blue Buffalo Life Protection Formula (kibble)",
+    threeToTwelve: 0.75,
+    thirteenToTwenty: 1.5,
+    twentyOneToThirtyFive: 2,
+    thirtySixToFifty: 3,
+    fiftyOneToSeventyFive: 3.75,
+    seventySixToOneHundred: 4.5,
   }
 ]
 
@@ -30,7 +46,7 @@ $(document).ready(function () {
 
 
 
-document.querySelector('#photo').addEventListener('change', function(){
+document.querySelector('#photo').addEventListener('change', function () {
   var reader = new FileReader();
 
   reader.addEventListener('load', () => {
@@ -63,9 +79,9 @@ $('.save-dog').on('click', function () {
   reloadDogs();
 })
 
-function reloadDogs() {  
+function reloadDogs() {
   var dogs = JSON.parse(localStorage.getItem("dogs"))
-  if(dogs === null) {
+  if (dogs === null) {
     return;
   }
   for (var i = 0; i < dogs.length; i++) {
@@ -73,11 +89,11 @@ function reloadDogs() {
     // tabs.appendChild(`<li class="tab col s4"><a href="#test${i+1}">'Test ${i+1}'</a></li>
     // `)
     var currentDog = dogs[i]
-    var element = document.querySelector(`#test${i+1}`);
+    var element = document.querySelector(`#test${i + 1}`);
     element.innerHTML = JSON.stringify(currentDog);
 
   }
-} 
+}
 
 
 // Test image preview
