@@ -33,35 +33,31 @@
                     <input id="dog-name" type="text" class="validate">
                     <label for="dog-name">Dog Name</label>
                 </div>
-                <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Weight Class</a>
-
-                <!-- Dropdown Structure -->
-                <ul id='dropdown1' class='dropdown-content'>
-                    <li><a href="#!">one</a></li>
-                    <li><a href="#!">two</a></li>
-                    <li class="divider" tabindex="-1"></li>
-                    <li><a href="#!">three</a></li>
-                    <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-                    <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
-                </ul>
                 <div class="input-field col s6">
-                    <input id="last_name" type="text" class="validate">
-                    <label for="last_name">Fun Fact!</label>
+                    <select id="dog-weight">
+                      <option value="" disabled selected>Choose your option</option>
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                      <option value="3">Option 3</option>
+                    </select>
+                    <label>Dog Weight</label>
+                  </div>
+
+
+                <div class="input-field col s6">
+                    <input id="fun-fact" type="text" class="validate">
+                    <label for="fun-fact">Fun Fact!</label>
                 </div>
-
-                <!-- Dropdown Trigger -->
-                <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
-
-                <!-- Dropdown Structure -->
-                <ul id='dropdown1' class='dropdown-content'>
-                    <li><a href="#!">one</a></li>
-                    <li><a href="#!">two</a></li>
-                    <li class="divider" tabindex="-1"></li>
-                    <li><a href="#!">three</a></li>
-                    <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-                    <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
-                </ul>
-
+                <div class="input-field col s6">
+                    <select id="diet">
+                      <option value="" disabled selected>Choose your option</option>
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                      <option value="3">Option 3</option>
+                    </select>
+                    <label>Diet Preference</label>
+                  </div>
+                
                 <div class="input-field col s6">
                     <input id="last_name" type="file" class="validate">
                     <label for="last_name">Upload Photo</label>
@@ -75,39 +71,35 @@
         <!-- Modal Structure -->
         <div id="modal2" class="modal">
             <div class="modal-content">
-                <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Dog Food 1</a>
-
-                <!-- Dropdown Structure -->
-                <ul id='dropdown1' class='dropdown-content'>
-                    <li><a href="#!">one</a></li>
-                    <li><a href="#!">two</a></li>
-                    <li class="divider" tabindex="-1"></li>
-                    <li><a href="#!">three</a></li>
-                    <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-                    <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
-                </ul>
                 <div class="input-field col s6">
-                    <input id="dog-name" type="text" class="validate">
-                    <label for="dog-name">Allocation Percentage</label>
+                    <select id="food1">
+                      <option value="" disabled selected>Choose your option</option>
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                      <option value="3">Option 3</option>
+                    </select>
+                    <label>Food 1</label>
+                  </div>
+                <div class="input-field col s6">
+                    <input id="food-1-percent" type="text" class="validate">
+                    <label for="food-1-percent">Allocation Percentage</label>
                 </div>
-                <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Dog Food 2</a>
-
-                <!-- Dropdown Structure -->
-                <ul id='dropdown1' class='dropdown-content'>
-                    <li><a href="#!">one</a></li>
-                    <li><a href="#!">two</a></li>
-                    <li class="divider" tabindex="-1"></li>
-                    <li><a href="#!">three</a></li>
-                    <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-                    <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
-                </ul>
                 <div class="input-field col s6">
-                    <input id="dog-name" type="text" class="validate">
-                    <label for="dog-name">Allocation Percentage</label>
+                    <select id="food2">
+                      <option value="" disabled selected>Choose your option</option>
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                      <option value="3">Option 3</option>
+                    </select>
+                    <label>Food 2</label>
+                  </div>
+                <div class="input-field col s6">
+                    <input id="food-2-percent" type="text" class="validate">
+                    <label for="food-2-percent">Allocation Percentage</label>
                 </div>
             </div>
             <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Save</a>
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat save-dog">Save</a>
             </div>
         </div>
         <div class="row">
@@ -138,3 +130,8 @@
 </body>
 
 </html>
+
+<!-- 
+    create maps widget
+    render dog photos
+ -->
