@@ -34,6 +34,7 @@ document.querySelector('#photo').addEventListener('change', function(){
   var reader = new FileReader();
 
   reader.addEventListener('load', () => {
+    console.log(reader.result);
     localStorage.setItem('photo', reader.result);
     photoData = reader.result;
   })
@@ -68,11 +69,9 @@ function reloadDogs() {
     return;
   }
   for (var i = 0; i < dogs.length; i++) {
-
     // var tabs = document.querySelector("#tabs");
     // tabs.appendChild(`<li class="tab col s4"><a href="#test${i+1}">'Test ${i+1}'</a></li>
     // `)
-
     var currentDog = dogs[i]
     var element = document.querySelector(`#test${i+1}`);
     element.innerHTML = JSON.stringify(currentDog);
@@ -82,13 +81,13 @@ function reloadDogs() {
 
 
 // Test image preview
-// document.addEventListener("DOMContentLoaded", () => {
-//   var imageDataUrl = localStorage.getItem("photo");
+document.addEventListener("DOMContentLoaded", () => {
+  var imageDataUrl = localStorage.getItem("photo");
 
-//   if (imageDataUrl) {
-//     document.querySelector("#imgPreview").setAttribute("src", imageDataUrl);
-//   }
-// });
+  if (imageDataUrl) {
+    document.querySelector("#imgPreview").setAttribute("src", imageDataUrl);
+  }
+});
 
 
 // clearing local storage when you remove a dog's profile
