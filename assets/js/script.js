@@ -1,20 +1,36 @@
 var products = [
   {
-    brandName: "Purina One (kibble)",
+    brandName: "Purina One Chicken and Rice (kibble)",
     threeToTwelve: 0.5,
-    thirteenToTwenty: 1,
-    twentyOneToThirtyFive: 1.5,
-    thirtySixToFifty: 2,
-    fiftyOneToSeventyFive: 3,
-    seventySixToOneHundred: 4,
+    thirteenToTwenty: 1.25,
+    twentyOneToThirtyFive: 1.75,
+    thirtySixToFifty: 2.5,
+    fiftyOneToSeventyFive: 3.25,
+    seventySixToOneHundred: 4.25,
   }, {
-    brandName: "Purina One (canned)",
-    threeToTwelve: 0.5,
-    thirteenToTwenty: 1,
-    twentyOneToThirtyFive: 1.5,
-    thirtySixToFifty: 2,
-    fiftyOneToSeventyFive: 3,
-    seventySixToOneHundred: 4,
+    brandName: "Purina One Beef and Brown Rice (canned)",
+    threeToTwelve: 0.75,
+    thirteenToTwenty: 1.25,
+    twentyOneToThirtyFive: 1.75,
+    thirtySixToFifty: 2.5,
+    fiftyOneToSeventyFive: 3.5,
+    seventySixToOneHundred: 4.5,
+  }, {
+    brandName: "Blue Buffalo Chicken Dinner (canned)",
+    threeToTwelve: 0.75,
+    thirteenToTwenty: 1.5,
+    twentyOneToThirtyFive: 2.25,
+    thirtySixToFifty: 3.25,
+    fiftyOneToSeventyFive: 5.25,
+    seventySixToOneHundred: 6.5,
+  }, {
+    brandName: "Blue Buffalo Life Protection Formula (kibble)",
+    threeToTwelve: 0.75,
+    thirteenToTwenty: 1.5,
+    twentyOneToThirtyFive: 2,
+    thirtySixToFifty: 3,
+    fiftyOneToSeventyFive: 3.75,
+    seventySixToOneHundred: 4.5,
   }
 ]
 
@@ -68,7 +84,6 @@ function reloadDogs() {
   if (dogs === null) {
     // populate placeholder div
 
-    return;
   }
   for (var i = 0; i < dogs.length; i++) {
     // var tabs = document.querySelector("#tabs");
