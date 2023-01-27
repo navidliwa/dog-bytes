@@ -30,7 +30,7 @@ $(document).ready(function () {
 
 
 
-document.querySelector('#photo').addEventListener('change', function(){
+document.querySelector('#photo').addEventListener('change', function () {
   var reader = new FileReader();
 
   reader.addEventListener('load', () => {
@@ -60,12 +60,14 @@ $('.save-dog').on('click', function () {
   dogObj.push(doggyDeets)
   localStorage.setItem("dogs", JSON.stringify(dogObj))
 
-  reloadDogs();
+  location.reload();
 })
 
-function reloadDogs() {  
+function reloadDogs() {
   var dogs = JSON.parse(localStorage.getItem("dogs"))
-  if(dogs === null) {
+  if (dogs === null) {
+    // populate placeholder div
+
     return;
   }
   for (var i = 0; i < dogs.length; i++) {
@@ -73,11 +75,19 @@ function reloadDogs() {
     // tabs.appendChild(`<li class="tab col s4"><a href="#test${i+1}">'Test ${i+1}'</a></li>
     // `)
     var currentDog = dogs[i]
-    var element = document.querySelector(`#test${i+1}`);
+    var element = document.querySelector(`#test${i + 1}`);
     element.innerHTML = JSON.stringify(currentDog);
 
+    // append li with internal anchor tag to #tabs: <li class="tab col s2"><a href="#test1">Test 1</a></li>
+    // append div to #container: <div id="test1" class="col s12">Test 1</div>
+    // create dog detail elements
+    // write data from dog object to the inner elements using .each()
+
+
+
+
   }
-} 
+}
 
 
 // Test image preview
@@ -95,3 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
 // form field validations
 // actually create dog food table records
 // build calcs for meal plans
+// do input validation
+
+// look into how to look for dog parks via api
