@@ -19,3 +19,10 @@
 .add-dog {
     filter: invert(100%);
 }
+
+
+#imgPreview {
+    width:400px;
+    height:600px;
+    object-fit: contain;
+}

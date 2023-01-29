@@ -1,40 +1,43 @@
 var products = [
   {
-    brandName: "Purina One Chicken and Rice (kibble)",
+    brandName: "Purina One (kibble)",
     threeToTwelve: 0.5,
-    thirteenToTwenty: 1.25,
-    twentyOneToThirtyFive: 1.75,
-    thirtySixToFifty: 2.5,
-    fiftyOneToSeventyFive: 3.25,
-    seventySixToOneHundred: 4.25,
+    thirteenToTwenty: 1,
+    twentyOneToThirtyFive: 1.5,
+    thirtySixToFifty: 2,
+    fiftyOneToSeventyFive: 3,
+    seventySixToOneHundred: 4,
   }, {
-    brandName: "Purina One Beef and Brown Rice (canned)",
-    threeToTwelve: 0.75,
-    thirteenToTwenty: 1.25,
-    twentyOneToThirtyFive: 1.75,
-    thirtySixToFifty: 2.5,
-    fiftyOneToSeventyFive: 3.5,
-    seventySixToOneHundred: 4.5,
-  }, {
-    brandName: "Blue Buffalo Chicken Dinner (canned)",
-    threeToTwelve: 0.75,
-    thirteenToTwenty: 1.5,
-    twentyOneToThirtyFive: 2.25,
-    thirtySixToFifty: 3.25,
-    fiftyOneToSeventyFive: 5.25,
-    seventySixToOneHundred: 6.5,
-  }, {
-    brandName: "Blue Buffalo Life Protection Formula (kibble)",
-    threeToTwelve: 0.75,
-    thirteenToTwenty: 1.5,
-    twentyOneToThirtyFive: 2,
-    thirtySixToFifty: 3,
-    fiftyOneToSeventyFive: 3.75,
-    seventySixToOneHundred: 4.5,
+    brandName: "Purina One (canned)",
+    threeToTwelve: 0.5,
+    thirteenToTwenty: 1,
+    twentyOneToThirtyFive: 1.5,
+    thirtySixToFifty: 2,
+    fiftyOneToSeventyFive: 3,
+    seventySixToOneHundred: 4,
   }
 ]
 
 this.photoData = "";
+
+var randomimg ="";
+var preview = document.getElementById('imgPreview');
+
+function randomdog() {
+
+  fetch('https://dog.ceo/api/breeds/image/random')
+  .then (Response=>Response.json())
+  .then (Response=>{
+    randomimg = Response.message;
+    preview.src = randomimg;
+  });
+  return randomimg;
+
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  randomdog();
+});
 
 $(document).ready(function () {
   $('.tabs').tabs();
@@ -46,7 +49,7 @@ $(document).ready(function () {
 
 
 
-document.querySelector('#photo').addEventListener('change', function () {
+document.querySelector('#photo').addEventListener('change', function(){
   var reader = new FileReader();
 
   reader.addEventListener('load', () => {
@@ -76,33 +79,24 @@ $('.save-dog').on('click', function () {
   dogObj.push(doggyDeets)
   localStorage.setItem("dogs", JSON.stringify(dogObj))
 
-  location.reload();
+  reloadDogs();
 })
 
-function reloadDogs() {
+function reloadDogs() {  
   var dogs = JSON.parse(localStorage.getItem("dogs"))
-  if (dogs === null) {
-    // populate placeholder div
-
+  if(dogs === null) {
+    return;
   }
   for (var i = 0; i < dogs.length; i++) {
     // var tabs = document.querySelector("#tabs");
     // tabs.appendChild(`<li class="tab col s4"><a href="#test${i+1}">'Test ${i+1}'</a></li>
     // `)
     var currentDog = dogs[i]
-    var element = document.querySelector(`#test${i + 1}`);
+    var element = document.querySelector(`#test${i+1}`);
     element.innerHTML = JSON.stringify(currentDog);
 
-    // append li with internal anchor tag to #tabs: <li class="tab col s2"><a href="#test1">Test 1</a></li>
-    // append div to #container: <div id="test1" class="col s12">Test 1</div>
-    // create dog detail elements
-    // write data from dog object to the inner elements using .each()
-
-
-
-
   }
-}
+} 
 
 
 // Test image preview
@@ -120,6 +114,3 @@ document.addEventListener("DOMContentLoaded", () => {
 // form field validations
 // actually create dog food table records
 // build calcs for meal plans
-// do input validation
-
-// look into how to look for dog parks via api
