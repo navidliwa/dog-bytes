@@ -253,8 +253,7 @@ function reloadDogs() {
       `
       <div class="col s8">
         <h5 class="center-align">Name: ${dogs[i].name}</h5>
-        <h5 class="center-align">Weight: ${dogs[i].weight}lbs</h5>
-        <h5 class="center-align">Food choice: ${dogs[i].food1}, ${dogs[i].food2}</h5>
+        <h5 class="center-align">Weight: ${weights[dogs[i].weight]}</h5>
         <h5 class="center-align">Fun Fact: ${dogs[i].funFact}</h5>
         <h5 class="center-align">To achieve health and happiness, ${dogs[i].name} needs to ${diets[dogs[i].dietGoal]}.</h5>
       </div>
@@ -269,12 +268,12 @@ function reloadDogs() {
             <ul>
               <li class="center-align">
                 <h5>
-                  ${products[dogs[i].food2].brandName} can of canned food
+                  ${secondaryString} can of canned food (${products[dogs[i].food2].brandName})
                 </h5>
               </li>
               <li class="center-align">
                 <h5>
-                  ${products[dogs[i].food1].brandName} cups of kibble
+                  ${primaryString} cups of kibble (${products[dogs[i].food1].brandName})
                 </h5>
               </li>
             </ul>
