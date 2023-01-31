@@ -13,38 +13,41 @@ var markers = [];
 var products = [
   {
     brandName: "Purina One Chicken and Rice (kibble)",
-    threeToTwelve: 0.5,
-    thirteenToTwenty: 1.25,
-    twentyOneToThirtyFive: 1.75,
-    thirtySixToFifty: 2.5,
-    fiftyOneToSeventyFive: 3.25,
-    seventySixToOneHundred: 4.25,
+    0: 0.5,
+    1: 1.25,
+    2: 1.75,
+    3: 2.5,
+    4: 3.25,
+    5: 4.25,
   }, {
     brandName: "Purina One Beef and Brown Rice (canned)",
-    threeToTwelve: 0.75,
-    thirteenToTwenty: 1.25,
-    twentyOneToThirtyFive: 1.75,
-    thirtySixToFifty: 2.5,
-    fiftyOneToSeventyFive: 3.5,
-    seventySixToOneHundred: 4.5,
+    0: 0.75,
+    1: 1.25,
+    2: 1.75,
+    3: 2.5,
+    4: 3.5,
+    5: 4.5,
   }, {
     brandName: "Blue Buffalo Chicken Dinner (canned)",
-    threeToTwelve: 0.75,
-    thirteenToTwenty: 1.5,
-    twentyOneToThirtyFive: 2.25,
-    thirtySixToFifty: 3.25,
-    fiftyOneToSeventyFive: 5.25,
-    seventySixToOneHundred: 6.5,
+    0: 0.75,
+    1: 1.5,
+    2: 2.25,
+    3: 3.25,
+    4: 5.25,
+    5: 6.5,
   }, {
     brandName: "Blue Buffalo Life Protection Formula (kibble)",
-    threeToTwelve: 0.75,
-    thirteenToTwenty: 1.5,
-    twentyOneToThirtyFive: 2,
-    thirtySixToFifty: 3,
-    fiftyOneToSeventyFive: 3.75,
-    seventySixToOneHundred: 4.5,
+    0: 0.75,
+    1: 1.5,
+    2: 2,
+    3: 3,
+    4: 3.75,
+    5: 4.5,
   }
 ]
+var weights = ["3 - 12 lbs","13 - 20 lbs","21 - 35 lbs","36 - 50 lbs","51 - 75 lbs,","76 - 100 lbs"]
+var diets = ["lose weight","maintain weight","gain weight"]
+
 
 this.photoData = "";
 
@@ -169,6 +172,7 @@ $('.save-dog').on('click', function () {
 
 function reloadDogs() {
   var dogs = JSON.parse(localStorage.getItem("dogs"))
+  console.log(dogs)
   if (dogs === null) {
     // Add placeholder tab
     var tabs = document.querySelector("#tabs");
@@ -199,7 +203,49 @@ function reloadDogs() {
     dogProfiles.appendChild(placeHolder);
     return;
   }
+  var lastDogPos = dogs.length - 1
+  $('#placeholder').attr("style","display: none");
+  $('.placeholder').attr('style', 'display: none');
   for (var i = 0; i < dogs.length; i++) {
+    //food calcs
+    var primaryFoodServings = products[dogs[i].food1][dogs[i].weight]*dogs[i].food1percent/100
+    console.log(primaryFoodServings)
+    var secondaryFoodServings = products[dogs[i].food2][dogs[i].weight]*dogs[i].food2percent/100
+    console.log(secondaryFoodServings)
+    if (dogs[i].dietGoal == 0) {
+      primaryFoodServings = primaryFoodServings * 0.9
+      secondaryFoodServings = secondaryFoodServings * 0.9
+    } else if (dogs[i].dietGoal == 2) {
+      primaryFoodServings = primaryFoodServings * 1.1
+      secondaryFoodServings = secondaryFoodServings * 1.1
+    }
+    console.log(primaryFoodServings)
+    console.log(secondaryFoodServings)
+    var primaryString = primaryFoodServings.toFixed(2)
+    var secondaryString = secondaryFoodServings.toFixed(2)
+
+    //dog detail elements
+    var dogName = document.createElement('h2')
+    var listEl = document.createElement('ul')
+    var dogWeight = document.createElement('li')
+    var dogFunFact = document.createElement('li')
+    var dogDiet = document.createElement('li')
+    var dogMealPlan = document.createElement('p')
+    dogName.innerText = dogs[i].name;
+    dogWeight.innerText = "Weight: " + weights[dogs[i].weight];
+    dogFunFact.innerText = "Fun Fact: " + dogs[i].funFact;
+    dogDiet.innerText = "To achieve health and happiness, " + dogs[i].name + " needs to " + diets[dogs[i].dietGoal] + ".";
+    dogMealPlan.innerHTML = "<p>" + products[dogs[i].food1].brandName + " - cups/day: "+primaryString+"</p><br><p>"+products[dogs[i].food2].brandName+" - cans/day: "+secondaryString+"</p>"
+    listEl.append(dogWeight, dogFunFact, dogDiet, dogMealPlan)
+    var currentDogEl = document.createElement('div');
+    currentDogEl.setAttribute("class", "col s12")
+    currentDogEl.setAttribute("id", "dog"+i)
+    currentDogEl.setAttribute("style", "display: none")
+    currentDogEl.append(dogName, listEl)
+    $('#container').append(currentDogEl)
+
+    // add the image?
+    
 
     // Adds tabs according to number of profiles added
     var tabs = document.querySelector("#tabs");
@@ -270,6 +316,12 @@ function reloadDogs() {
   }
 }
 
+// Select most recently created tab?
+function selectLast() {
+    $('#tabs:last-child').children().click()
+    console.log('this function is running')
+  }
+
 // Test image preview
 document.addEventListener("DOMContentLoaded", () => {
   var imageDataUrl = localStorage.getItem("photo");
@@ -282,11 +334,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // clearing local storage when you remove a dog's profile
-// populate div tabs with data from localstorage on load
 // form field validations
-// actually create dog food table records
-// build calcs for meal plans
 // do input validation
 
-// look into how to look for dog parks via api
-
+// style modal
+// style main page
