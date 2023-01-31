@@ -5,21 +5,37 @@ var markers = [];
 
 var products = [
   {
-    brandName: "Purina One (kibble)",
+    brandName: "Purina One Chicken and Rice (kibble)",
     threeToTwelve: 0.5,
-    thirteenToTwenty: 1,
-    twentyOneToThirtyFive: 1.5,
-    thirtySixToFifty: 2,
-    fiftyOneToSeventyFive: 3,
-    seventySixToOneHundred: 4,
+    thirteenToTwenty: 1.25,
+    twentyOneToThirtyFive: 1.75,
+    thirtySixToFifty: 2.5,
+    fiftyOneToSeventyFive: 3.25,
+    seventySixToOneHundred: 4.25,
   }, {
-    brandName: "Purina One (canned)",
-    threeToTwelve: 0.5,
-    thirteenToTwenty: 1,
-    twentyOneToThirtyFive: 1.5,
-    thirtySixToFifty: 2,
-    fiftyOneToSeventyFive: 3,
-    seventySixToOneHundred: 4,
+    brandName: "Purina One Beef and Brown Rice (canned)",
+    threeToTwelve: 0.75,
+    thirteenToTwenty: 1.25,
+    twentyOneToThirtyFive: 1.75,
+    thirtySixToFifty: 2.5,
+    fiftyOneToSeventyFive: 3.5,
+    seventySixToOneHundred: 4.5,
+  }, {
+    brandName: "Blue Buffalo Chicken Dinner (canned)",
+    threeToTwelve: 0.75,
+    thirteenToTwenty: 1.5,
+    twentyOneToThirtyFive: 2.25,
+    thirtySixToFifty: 3.25,
+    fiftyOneToSeventyFive: 5.25,
+    seventySixToOneHundred: 6.5,
+  }, {
+    brandName: "Blue Buffalo Life Protection Formula (kibble)",
+    threeToTwelve: 0.75,
+    thirteenToTwenty: 1.5,
+    twentyOneToThirtyFive: 2,
+    thirtySixToFifty: 3,
+    fiftyOneToSeventyFive: 3.75,
+    seventySixToOneHundred: 4.5,
   }
 ]
 
@@ -72,7 +88,7 @@ $('#zip-input-button').on('click', function () {
 //get details of near by dog parks using google places api
 function getDogParks(lat, lng) {
   $.ajax({
-    url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + lat + '%2C' + lng + '&radius=5000&keyword=dog+park&key=' + apiKey,
+    url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + lat + '%2C' + lng + '&radius=10000&keyword=dog+park&key=' + apiKey,
     success: function (data) {
       console.log(data)
       generateMarkers(data)
@@ -90,7 +106,7 @@ function generateMarkers(data) {
   //zoom in on marker 1
   map.setZoom(12)
   map.panTo(data.results[0].geometry.location)
-  for (var i = 0; i < data.results.length; i++) {
+  for (var i = 0; i < 5; i++) {
     markers.push(new google.maps.Marker({
       position: data.results[i].geometry.location,
       map: map,
@@ -103,7 +119,7 @@ function generateMarkers(data) {
 
 
 
-document.querySelector('#photo').addEventListener('change', function () {
+document.querySelector('#photo').addEventListener('change', function  ()  {
   var reader = new FileReader();
 
   reader.addEventListener('load', () => {
@@ -133,13 +149,14 @@ $('.save-dog').on('click', function () {
   dogObj.push(doggyDeets)
   localStorage.setItem("dogs", JSON.stringify(dogObj))
 
-  reloadDogs();
+  location.reload();
 })
 
 function reloadDogs() {
   var dogs = JSON.parse(localStorage.getItem("dogs"))
   if (dogs === null) {
-    return;
+    // populate placeholder div
+
   }
   for (var i = 0; i < dogs.length; i++) {
     // var tabs = document.querySelector("#tabs");
@@ -148,6 +165,14 @@ function reloadDogs() {
     var currentDog = dogs[i]
     var element = document.querySelector(`#test${i + 1}`);
     element.innerHTML = JSON.stringify(currentDog);
+
+    // append li with internal anchor tag to #tabs: <li class="tab col s2"><a href="#test1">Test 1</a></li>
+    // append div to #container: <div id="test1" class="col s12">Test 1</div>
+    // create dog detail elements
+    // write data from dog object to the inner elements using .each()
+
+
+
 
   }
 }
@@ -168,3 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
 // form field validations
 // actually create dog food table records
 // build calcs for meal plans
+// do input validation
+
+// look into how to look for dog parks via api
