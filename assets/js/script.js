@@ -41,6 +41,28 @@ var products = [
 
 this.photoData = "";
 
+var randomimg ="";
+var preview = document.getElementById('imgPreview');
+
+function randomdog() {
+
+  fetch('https://dog.ceo/api/breeds/image/random')
+  .then (Response=>Response.json())
+  .then (Response=>{
+    randomimg = Response.message;
+    preview.src = randomimg;
+  });
+  return randomimg;
+
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  randomdog();
+});
+
+
+
+
 $(document).ready(function () {
   $('.tabs').tabs();
   $('.modal').modal();
