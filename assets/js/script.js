@@ -87,7 +87,7 @@ $('#zip-input-button').on('click', function () {
   console.log(searchTerm)
   //use open weather api to get lat and lng from the zip code
   $.ajax({
-    url: "http://api.openweathermap.org/geo/1.0/zip?zip=" + searchTerm + "&appid=" + openWeatherKey,
+    url: "https://api.openweathermap.org/geo/1.0/zip?zip=" + searchTerm + "&appid=" + openWeatherKey,
     success: function (data) {
       searchLat = data.lat
       searchLng = data.lon
