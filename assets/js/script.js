@@ -3,12 +3,12 @@ $(document).ready(function () {
   $('.dropdown-trigger').dropdown();
   $('select').formSelect();
   reloadDogs();
-  initMap()
 });
 const apiKey = 'AIzaSyCMvF_-po-_5NauKvu27lmuClGyHqgG9NU'
 const openWeatherKey = '6e36d909b1e27a85b3c299313b8d76b9'
 var map;
 var markers = [];
+var service
 
 var products = [
   {
@@ -45,39 +45,39 @@ var products = [
     5: 4.5,
   }
 ]
-var weights = ["3 - 12 lbs","13 - 20 lbs","21 - 35 lbs","36 - 50 lbs","51 - 75 lbs,","76 - 100 lbs"]
-var diets = ["lose weight","maintain weight","gain weight"]
+var weights = ["3 - 12 lbs", "13 - 20 lbs", "21 - 35 lbs", "36 - 50 lbs", "51 - 75 lbs,", "76 - 100 lbs"]
+var diets = ["lose weight", "maintain weight", "gain weight"]
 
 
 this.photoData = "";
 
-var randomimg ="";
+var randomimg = "";
 var preview = document.getElementById('imgPreview');
 
 function randomdog() {
 
   fetch('https://dog.ceo/api/breeds/image/random')
-  .then (Response=>Response.json())
-  .then (Response=>{
-    randomimg = Response.message;
-    preview.src = randomimg;
-  });
+    .then(Response => Response.json())
+    .then(Response => {
+      randomimg = Response.message;
+      preview.src = randomimg;
+    });
   return randomimg;
 
 }
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function () {
   randomdog();
 });
 
-//code for initializing the google map
+//code for initializing the google map (automatically called by the library)
 function initMap() {
 
   var coords = { lat: 41.22, lng: -111.97 };
   map = new google.maps.Map(document.getElementById("map"), {
     zoom: 4,
     center: coords,
-    
+
   });
   console.log(map)
 }
@@ -105,31 +105,35 @@ $('#zip-input-button').on('click', function () {
 })
 //get details of near by dog parks using google places api
 function getDogParks(lat, lng) {
-  $.ajax({
-    url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + lat + '%2C' + lng + '&radius=10000&keyword=dog+park&key=' + apiKey,
-    success: function (data) {
-      console.log(data)
-      generateMarkers(data)
-    },
-    error: function (data) {
-      console.log(data)
+  var request = {
+    location: new google.maps.LatLng(lat, lng),
+    radius: 10000,
+    keyword: "dog park",
+    openNow: true
+  }
+  service = new google.maps.places.PlacesService(map);
+  service.nearbySearch(request, callback);
+}
+function callback(results, status){
+  if(status == google.maps.places.PlacesServiceStatus.OK){
+      console.log(results)
+      generateMarkers(results)
     }
-  })
 }
 function generateMarkers(data) {
   //clear previous markers
-  for(var i = 0; i < markers.length; i++){
+  for (var i = 0; i < markers.length; i++) {
     markers[i].setMap(null)
   }
   //zoom in on marker 1
   map.setZoom(12)
-  map.panTo(data.results[0].geometry.location)
+  map.panTo(data[0].geometry.location)
   for (var i = 0; i < 5; i++) {
     markers.push(new google.maps.Marker({
-      position: data.results[i].geometry.location,
+      position: data[i].geometry.location,
       map: map,
-      label: ""+(i+1),
-      title: data.results[i].name
+      label: "" + (i + 1),
+      title: data[i].name
     }))
   }
 }
@@ -137,7 +141,7 @@ function generateMarkers(data) {
 
 
 
-document.querySelector('#photo').addEventListener('change', function  ()  {
+document.querySelector('#photo').addEventListener('change', function () {
   var reader = new FileReader();
 
   reader.addEventListener('load', () => {
@@ -179,19 +183,19 @@ function reloadDogs() {
     var noDogTab = document.createElement("li");
     noDogTab.setAttribute("href", "#no-dog");
     noDogTab.setAttribute("class", "tab col s2");
-    noDogTab.innerHTML = 
-    `
+    noDogTab.innerHTML =
+      `
     <a>Create a Dog Profile!</a>
     `;
     tabs.appendChild(noDogTab);
-    
+
     // Add placeholder div
     var dogProfiles = document.querySelector("#dogProfiles");
     var placeHolder = document.createElement("div")
     placeHolder.setAttribute("id", "no-dog");
     placeHolder.setAttribute("class", "col s12");
-    placeHolder.innerHTML = 
-    `
+    placeHolder.innerHTML =
+      `
     <h4 class="center-align">You haven't added any dogs!</h4>
     <p class="center-align">
       <a class="btn-large waves-effect waves-light modal-trigger red" id="placeholderBtn" href="#modal1">
@@ -204,13 +208,13 @@ function reloadDogs() {
     return;
   }
   var lastDogPos = dogs.length - 1
-  $('#placeholder').attr("style","display: none");
+  $('#placeholder').attr("style", "display: none");
   $('.placeholder').attr('style', 'display: none');
   for (var i = 0; i < dogs.length; i++) {
     //food calcs
-    var primaryFoodServings = products[dogs[i].food1][dogs[i].weight]*dogs[i].food1percent/100
+    var primaryFoodServings = products[dogs[i].food1][dogs[i].weight] * dogs[i].food1percent / 100
     console.log(primaryFoodServings)
-    var secondaryFoodServings = products[dogs[i].food2][dogs[i].weight]*dogs[i].food2percent/100
+    var secondaryFoodServings = products[dogs[i].food2][dogs[i].weight] * dogs[i].food2percent / 100
     console.log(secondaryFoodServings)
     if (dogs[i].dietGoal == 0) {
       primaryFoodServings = primaryFoodServings * 0.9
@@ -235,36 +239,36 @@ function reloadDogs() {
     dogWeight.innerText = "Weight: " + weights[dogs[i].weight];
     dogFunFact.innerText = "Fun Fact: " + dogs[i].funFact;
     dogDiet.innerText = "To achieve health and happiness, " + dogs[i].name + " needs to " + diets[dogs[i].dietGoal] + ".";
-    dogMealPlan.innerHTML = "<p>" + products[dogs[i].food1].brandName + " - cups/day: "+primaryString+"</p><br><p>"+products[dogs[i].food2].brandName+" - cans/day: "+secondaryString+"</p>"
+    dogMealPlan.innerHTML = "<p>" + products[dogs[i].food1].brandName + " - cups/day: " + primaryString + "</p><br><p>" + products[dogs[i].food2].brandName + " - cans/day: " + secondaryString + "</p>"
     listEl.append(dogWeight, dogFunFact, dogDiet, dogMealPlan)
     var currentDogEl = document.createElement('div');
     currentDogEl.setAttribute("class", "col s12")
-    currentDogEl.setAttribute("id", "dog"+i)
+    currentDogEl.setAttribute("id", "dog" + i)
     currentDogEl.setAttribute("style", "display: none")
     currentDogEl.append(dogName, listEl)
     $('#container').append(currentDogEl)
 
     // add the image?
-    
+
 
     // Adds tabs according to number of profiles added
     var tabs = document.querySelector("#tabs");
     var tab = document.createElement("li");
     tab.setAttribute("class", "tab col s2");
     var tabLink = document.createElement("a");
-    tabLink.setAttribute("href", "#dog" + (i+1));
+    tabLink.setAttribute("href", "#dog" + (i + 1));
     tabLink.innerHTML = `${dogs[i].name}`;
     tab.appendChild(tabLink);
     tabs.appendChild(tab);
-    
+
     // Adds dog info sections according to number of profiles added
     var imageDataUrl = localStorage.getItem("photo");
     var dogProfiles = document.querySelector("#dogProfiles");
     var dogInfo = document.createElement("div");
-    dogInfo.setAttribute("id", "dog" + (i+1));
+    dogInfo.setAttribute("id", "dog" + (i + 1));
     dogInfo.setAttribute("class", "col s12");
     // Dog info is populated into dogInfo div
-    dogInfo.innerHTML = 
+    dogInfo.innerHTML =
       `
       <div class="col s8">
         <h5 class="center-align">Name: ${dogs[i].name}</h5>
@@ -318,9 +322,9 @@ function reloadDogs() {
 
 // Select most recently created tab?
 function selectLast() {
-    $('#tabs:last-child').children().click()
-    console.log('this function is running')
-  }
+  $('#tabs:last-child').children().click()
+  console.log('this function is running')
+}
 
 // Test image preview
 document.addEventListener("DOMContentLoaded", () => {
