@@ -43,6 +43,7 @@ this.photoData = "";
 
 var randomimg ="";
 var preview = document.getElementById('imgPreview');
+var button = document.getElementById('RandomButton')
 
 function randomdog() {
 
@@ -58,6 +59,10 @@ function randomdog() {
 
 document.addEventListener("DOMContentLoaded", function(){
   randomdog();
+  button.addEventListener("click", function(){
+    randomdog();
+  });
+
 });
 
 
