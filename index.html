@@ -16,23 +16,30 @@
 </head>
 
 <body>
+    <!-- Page header with app name: DogBytes -->
     <nav>
         <div class="nav-wrapper">
             <a href="#" class="brand-logo center">DogBytes</a>
+            <!-- Add new dog profile button -->
             <a class="btn-floating btn-large waves-effect waves-light modal-trigger red" href="#modal1"><img
                     src="./assets/images/add-dog.png" alt="" height="40px" class="add-dog"></a>
         </div>
     </nav>
     <main>
+        <!-- Dog info input modal container -->
         <div id="modal1" class="modal">
+            <!-- Modal -->
             <div class="modal-content">
+                <!-- Modal header -->
                 <div class="nav-wrapper">
-                    <a href="" class="brand-logo center">Enter your dog's information!</a>
+                    <h5 href="" class="brand-logo center">Enter your dog's information!</h5>
                 </div>
+                <!-- Dog name input fied -->
                 <div class="input-field col s6">
                     <input id="dog-name" type="text" class="validate">
                     <label for="dog-name">Dog Name</label>
                 </div>
+                <!-- Dog weight selection -->
                 <div class="input-field col s6">
                     <select id="dog-weight">
                         <option value="" disabled selected>Sellect Dog Weight</option>
@@ -46,11 +53,12 @@
                     <label>Dog Weight</label>
                 </div>
 
-
+                <!-- Fun fact input field -->
                 <div class="input-field col s6">
                     <input id="fun-fact" type="text" class="validate">
                     <label for="fun-fact">Fun Fact!</label>
                 </div>
+                <!-- Diet selection -->
                 <div class="input-field col s6">
                     <select id="diet">
                         <option value="" disabled selected>Select Diet Option</option>
@@ -60,7 +68,7 @@
                     </select>
                     <label>Diet Preference</label>
                 </div>
-
+                <!-- Dog photo file upload -->
                 <div class="file-field input-field">
                     <div class="btn">
                         <span>Choose Photo</span>
@@ -72,13 +80,16 @@
                 </div>
 
             </div>
+            <!-- Next button -->
             <div class="modal-footer">
                 <a class="modal-close waves-effect waves-green btn-flat modal-trigger" href="#modal2">Next</a>
             </div>
         </div>
-        <!-- Modal Structure -->
+        <!-- 2nd dog info input container div -->
         <div id="modal2" class="modal">
+            <!-- Modal -->
             <div class="modal-content">
+                <!-- Food 1 selection -->
                 <div class="input-field col s6">
                     <select id="food1">
                         <option value="" disabled selected>Select your Kibble</option>
@@ -87,10 +98,12 @@
                     </select>
                     <label>Kibble</label>
                 </div>
+                <!-- Food 1 percentage allocation input field -->
                 <div class="input-field col s6">
                     <input id="food-1-percent" type="text" class="validate">
                     <label for="food-1-percent">Allocation Percentage</label>
                 </div>
+                <!-- Food 2 input field -->
                 <div class="input-field col s6">
                     <select id="food2">
                         <option value="" disabled selected>Select your Canned Food</option>
@@ -99,32 +112,35 @@
                     </select>
                     <label>Canned Food</label>
                 </div>
+                <!-- Food 2 percentage allocation input field -->
                 <div class="input-field col s6">
                     <input id="food-2-percent" type="text" class="validate">
                     <label for="food-2-percent">Allocation Percentage</label>
                 </div>
             </div>
+            <!-- Save button -->
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat save-dog">Save</a>
             </div>
         </div>
+        <!-- Dog tabs and profile container div -->
         <div id="container" class="row">
             <div class="container">
+                <!-- Tabs container div -->
                 <div class="col s12">
                     <ul id="tabs" class="tabs">
-                        
-                        <li class="tab col s2"><a href="#test1">Test 1</a></li>
-                        <li class="tab col s2"><a class="active" href="#test2">Test 2</a></li>
-                        <li class="tab col s2"><a href="#test3">Test 3</a></li>
+                        <!-- Tabs will generate here -->
                     </ul>
                 </div>
             </div>
-            <div id="test1" class="col s12">Test 1</div>
-            <div id="test2" class="col s12">Test 2</div>
-            <div id="test3" class="col s12">Test 3</div>
+            <!-- Dog profiles wrapper div -->
+            <div id="dogProfiles" class="container row z-depth-3">
+                <!-- Dog info will generate here -->
+            </div>
+        </div>
         </div>
         <!-- testing img preview -->
-        <img id="imgPreview" src="" alt="preview"> 
+        <img id="imgPreview" src="" alt="preview">
     </main>
 
     <!-- div for map and all of its components -->
