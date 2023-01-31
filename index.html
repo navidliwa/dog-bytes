@@ -9,27 +9,37 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
     <title>DogBytes</title>
 </head>
 
 <body>
+    <!-- Page header with app name: DogBytes -->
     <nav>
         <div class="nav-wrapper">
             <a href="#" class="brand-logo center">DogBytes</a>
+            <!-- Add new dog profile button -->
             <a class="btn-floating btn-large waves-effect waves-light modal-trigger red" href="#modal1"><img
                     src="./assets/images/add-dog.png" alt="" height="40px" class="add-dog"></a>
         </div>
     </nav>
     <main>
+        <!-- Dog info input modal container -->
         <div id="modal1" class="modal">
+            <!-- Modal -->
             <div class="modal-content">
+                <!-- Modal header -->
                 <div class="nav-wrapper">
-                    <a href="" class="brand-logo center">Enter your dog's information!</a>
+                    <h5 href="" class="brand-logo center">Enter your dog's information!</h5>
                 </div>
+                <!-- Dog name input fied -->
                 <div class="input-field col s6">
                     <input id="dog-name" type="text" class="validate">
                     <label for="dog-name">Dog Name</label>
                 </div>
+                <!-- Dog weight selection -->
                 <div class="input-field col s6">
                     <select id="dog-weight">
                         <option value="" disabled selected>Sellect Dog Weight</option>
@@ -43,11 +53,12 @@
                     <label>Dog Weight</label>
                 </div>
 
-
+                <!-- Fun fact input field -->
                 <div class="input-field col s6">
                     <input id="fun-fact" type="text" class="validate">
                     <label for="fun-fact">Fun Fact!</label>
                 </div>
+                <!-- Diet selection -->
                 <div class="input-field col s6">
                     <select id="diet">
                         <option value="" disabled selected>Select Diet Option</option>
@@ -57,7 +68,7 @@
                     </select>
                     <label>Diet Preference</label>
                 </div>
-
+                <!-- Dog photo file upload -->
                 <div class="file-field input-field">
                     <div class="btn">
                         <span>Choose Photo</span>
@@ -69,13 +80,16 @@
                 </div>
 
             </div>
+            <!-- Next button -->
             <div class="modal-footer">
                 <a class="modal-close waves-effect waves-green btn-flat modal-trigger" href="#modal2">Next</a>
             </div>
         </div>
-        <!-- Modal Structure -->
+        <!-- 2nd dog info input container div -->
         <div id="modal2" class="modal">
+            <!-- Modal -->
             <div class="modal-content">
+                <!-- Food 1 selection -->
                 <div class="input-field col s6">
                     <select id="food1">
                         <option value="" disabled selected>Select your Kibble</option>
@@ -84,10 +98,12 @@
                     </select>
                     <label>Kibble</label>
                 </div>
+                <!-- Food 1 percentage allocation input field -->
                 <div class="input-field col s6">
                     <input id="food-1-percent" type="text" class="validate">
                     <label for="food-1-percent">Allocation Percentage</label>
                 </div>
+                <!-- Food 2 input field -->
                 <div class="input-field col s6">
                     <select id="food2">
                         <option value="" disabled selected>Select your Canned Food</option>
@@ -96,33 +112,59 @@
                     </select>
                     <label>Canned Food</label>
                 </div>
+                <!-- Food 2 percentage allocation input field -->
                 <div class="input-field col s6">
                     <input id="food-2-percent" type="text" class="validate">
                     <label for="food-2-percent">Allocation Percentage</label>
                 </div>
             </div>
+            <!-- Save button -->
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat save-dog">Save</a>
             </div>
         </div>
+        <!-- Dog tabs and profile container div -->
         <div id="container" class="row">
             <div class="container">
+                <!-- Tabs container div -->
                 <div class="col s12">
                     <ul id="tabs" class="tabs">
-                        
-                        <li class="tab col s2"><a class= "active placeholder" href="#placeholder">Add a Dog</a></li>
+                        <!-- Tabs will generate here -->
                     </ul>
                 </div>
             </div>
-            <div id="placeholder" class="col s12">Add your dog's details to get started!</div>
+            <!-- Dog profiles wrapper div -->
+            <div id="dogProfiles" class="container row z-depth-3">
+                <!-- Dog info will generate here -->
+            </div>
+        </div>
         </div>
         <!-- testing img preview -->
-        <img id="imgPreview" src="" alt="preview"> 
+        <img id="imgPreview" src="" alt="preview">
     </main>
+
+    <!-- div for map and all of its components -->
+    <div id="map-container container">
+        <div class="col s6 ">
+            <div class="row input-field ">
+                <div class=" col s10">
+                    <input id="zip-input" type="text" class="validate">
+                    <label for="zip-input" id="zip-input-status">Enter zip code for near by dog parks!</label>
+                </div>
+                <a class="waves-effect waves-light btn col s2" id="zip-input-button">Search</a>
+            </div>
+        </div>
+
+        <div id="map"></div>
+
+    </div>
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMvF_-po-_5NauKvu27lmuClGyHqgG9NU&callback=initMap"
+        defer>
+        </script>
     <script src="./assets/js/script.js"></script>
 </body>
 
