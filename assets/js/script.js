@@ -107,7 +107,7 @@ $('#zip-input-button').on('click', function () {
 function getDogParks(lat, lng) {
   var request = {
     location: new google.maps.LatLng(lat, lng),
-    radius: 10000,
+    radius: 8000,
     keyword: "dog park",
     openNow: true
   }
@@ -132,7 +132,7 @@ function generateMarkers(data) {
     markers.push(new google.maps.Marker({
       position: data[i].geometry.location,
       map: map,
-      label: "" + (i + 1),
+      label: (i + 1)+"", //empty quotes to turn it into a string
       title: data[i].name
     }))
   }
