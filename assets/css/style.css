@@ -19,3 +19,14 @@
 .add-dog {
     filter: invert(100%);
 }
+
+#imgPreview {
+    width:400px;
+    height:600px;
+    object-fit: contain;
+}
+/* map size */
+#map {
+    height: 400px;
+    width: 100%; 
+  }

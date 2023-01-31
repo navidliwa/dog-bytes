@@ -3,31 +3,138 @@ $(document).ready(function () {
   $('.dropdown-trigger').dropdown();
   $('select').formSelect();
   reloadDogs();
+  initMap()
 });
+const apiKey = 'AIzaSyCMvF_-po-_5NauKvu27lmuClGyHqgG9NU'
+const openWeatherKey = '6e36d909b1e27a85b3c299313b8d76b9'
+var map;
+var markers = [];
 
 var products = [
   {
-    brandName: "Purina One (kibble)",
+    brandName: "Purina One Chicken and Rice (kibble)",
     threeToTwelve: 0.5,
-    thirteenToTwenty: 1,
-    twentyOneToThirtyFive: 1.5,
-    thirtySixToFifty: 2,
-    fiftyOneToSeventyFive: 3,
-    seventySixToOneHundred: 4,
+    thirteenToTwenty: 1.25,
+    twentyOneToThirtyFive: 1.75,
+    thirtySixToFifty: 2.5,
+    fiftyOneToSeventyFive: 3.25,
+    seventySixToOneHundred: 4.25,
   }, {
-    brandName: "Purina One (canned)",
-    threeToTwelve: 0.5,
-    thirteenToTwenty: 1,
-    twentyOneToThirtyFive: 1.5,
-    thirtySixToFifty: 2,
-    fiftyOneToSeventyFive: 3,
-    seventySixToOneHundred: 4,
+    brandName: "Purina One Beef and Brown Rice (canned)",
+    threeToTwelve: 0.75,
+    thirteenToTwenty: 1.25,
+    twentyOneToThirtyFive: 1.75,
+    thirtySixToFifty: 2.5,
+    fiftyOneToSeventyFive: 3.5,
+    seventySixToOneHundred: 4.5,
+  }, {
+    brandName: "Blue Buffalo Chicken Dinner (canned)",
+    threeToTwelve: 0.75,
+    thirteenToTwenty: 1.5,
+    twentyOneToThirtyFive: 2.25,
+    thirtySixToFifty: 3.25,
+    fiftyOneToSeventyFive: 5.25,
+    seventySixToOneHundred: 6.5,
+  }, {
+    brandName: "Blue Buffalo Life Protection Formula (kibble)",
+    threeToTwelve: 0.75,
+    thirteenToTwenty: 1.5,
+    twentyOneToThirtyFive: 2,
+    thirtySixToFifty: 3,
+    fiftyOneToSeventyFive: 3.75,
+    seventySixToOneHundred: 4.5,
   }
 ]
 
 this.photoData = "";
 
-document.querySelector('#photo').addEventListener('change', function () {
+var randomimg ="";
+var preview = document.getElementById('imgPreview');
+
+function randomdog() {
+
+  fetch('https://dog.ceo/api/breeds/image/random')
+  .then (Response=>Response.json())
+  .then (Response=>{
+    randomimg = Response.message;
+    preview.src = randomimg;
+  });
+  return randomimg;
+
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  randomdog();
+});
+
+//code for initializing the google map
+function initMap() {
+
+  var coords = { lat: 41.22, lng: -111.97 };
+  map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 4,
+    center: coords,
+    
+  });
+  console.log(map)
+}
+//event listener for map search button
+$('#zip-input-button').on('click', function () {
+  $("#zip-input-status").text("Enter zip code for near by dog parks!")
+  var searchTerm = $("#zip-input").val()
+  var searchLat;
+  var searchLng;
+  console.log(searchTerm)
+  //use open weather api to get lat and lng from the zip code
+  $.ajax({
+    url: "http://api.openweathermap.org/geo/1.0/zip?zip=" + searchTerm + "&appid=" + openWeatherKey,
+    success: function (data) {
+      searchLat = data.lat
+      searchLng = data.lon
+      console.log(searchLat, searchLng)
+      //if successful, use lat and lng to get dog parks, or just parks
+      getDogParks(searchLat, searchLng)
+    },
+    error: function (xhr) {
+      $("#zip-input-status").text("Zip code not found! Error: " + xhr.status + ", " + xhr.statusText)
+    }
+  })
+})
+//get details of near by dog parks using google places api
+function getDogParks(lat, lng) {
+  $.ajax({
+    url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + lat + '%2C' + lng + '&radius=10000&keyword=dog+park&key=' + apiKey,
+    success: function (data) {
+      console.log(data)
+      generateMarkers(data)
+    },
+    error: function (data) {
+      console.log(data)
+    }
+  })
+}
+function generateMarkers(data) {
+  //clear previous markers
+  for(var i = 0; i < markers.length; i++){
+    markers[i].setMap(null)
+  }
+  //zoom in on marker 1
+  map.setZoom(12)
+  map.panTo(data.results[0].geometry.location)
+  for (var i = 0; i < 5; i++) {
+    markers.push(new google.maps.Marker({
+      position: data.results[i].geometry.location,
+      map: map,
+      label: ""+(i+1),
+      title: data.results[i].name
+    }))
+  }
+}
+
+
+
+
+document.querySelector('#photo').addEventListener('change', function  ()  {
   var reader = new FileReader();
 
   reader.addEventListener('load', () => {

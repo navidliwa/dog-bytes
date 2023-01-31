@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
     <title>DogBytes</title>
 </head>
 
@@ -39,10 +42,13 @@
                 <!-- Dog weight selection -->
                 <div class="input-field col s6">
                     <select id="dog-weight">
-                        <option value="" disabled selected>Choose your option</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
+                        <option value="" disabled selected>Sellect Dog Weight</option>
+                        <option value="1">3 - 12 lbs.</option>
+                        <option value="2">13 - 20 lbs</option>
+                        <option value="3">21 - 35 lbs</option>
+                        <option value="4">36 - 50 lbs</option>
+                        <option value="5">51 - 75 lbs</option>
+                        <option value="6">76 - 100 lbs</option>
                     </select>
                     <label>Dog Weight</label>
                 </div>
@@ -55,10 +61,10 @@
                 <!-- Diet selection -->
                 <div class="input-field col s6">
                     <select id="diet">
-                        <option value="" disabled selected>Choose your option</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
+                        <option value="" disabled selected>Select Diet Option</option>
+                        <option value="1">Lose Weight</option>
+                        <option value="2">Maintain Weight</option>
+                        <option value="3">Gain Weight</option>
                     </select>
                     <label>Diet Preference</label>
                 </div>
@@ -86,12 +92,11 @@
                 <!-- Food 1 selection -->
                 <div class="input-field col s6">
                     <select id="food1">
-                        <option value="" disabled selected>Choose your option</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
+                        <option value="" disabled selected>Select your Kibble</option>
+                        <option value="1">Purina One Chicken and Rice</option>
+                        <option value="2">Blue Buffalo Life Protection Formula</option>
                     </select>
-                    <label>Food 1</label>
+                    <label>Kibble</label>
                 </div>
                 <!-- Food 1 percentage allocation input field -->
                 <div class="input-field col s6">
@@ -101,12 +106,11 @@
                 <!-- Food 2 input field -->
                 <div class="input-field col s6">
                     <select id="food2">
-                        <option value="" disabled selected>Choose your option</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
+                        <option value="" disabled selected>Select your Canned Food</option>
+                        <option value="1">Blue Buffalo Chicken Dinner</option>
+                        <option value="2">Purina One Beef and Brown Rice</option>
                     </select>
-                    <label>Food 2</label>
+                    <label>Canned Food</label>
                 </div>
                 <!-- Food 2 percentage allocation input field -->
                 <div class="input-field col s6">
@@ -125,77 +129,42 @@
                 <!-- Tabs container div -->
                 <div class="col s12">
                     <ul id="tabs" class="tabs">
-                        <!-- <li class="tab col s2"><a href="#test1">Create a Dog Profile!</a></li> -->
-                        <!-- <li class="tab col s2"><a class="active" href="#test2">Test 2</a></li>
-                        <li class="tab col s2"><a href="#test3">Test 3</a></li> -->
+                        <!-- Tabs will generate here -->
                     </ul>
                 </div>
             </div>
             <!-- Dog profiles wrapper div -->
             <div id="dogProfiles" class="container row z-depth-3">
-                <!-- Dog info and image wrapper div -->
-                <!-- <div id="test1" class="col s12"> -->
-                    <!-- <h4 class="center-align">You haven't added any dogs!</h4>
-                    <p class="center-align">
-                        <a class="btn-large waves-effect waves-light modal-trigger red" id="placeholderBtn" href="#modal1">
-                            <img src="./assets/images/add-dog.png" alt="" height="30px" class="add-dog">
-                            Click here to add a dog profile!
-                        </a>
-                    </p> -->
-                    <!-- Dog info div -->
-                    <!-- <div class="col s8">
-                        <h5 class="center-align">Name: Clara</h5>
-                        <h5 class="center-align">Weight: 55lbs</h5>
-                        <h5 class="center-align">Food choice: Kibble, Canned</h5>
-                        <h5 class="center-align">Fun Fact: She is a dog</h5>
-                    </div>
-                </div> -->
-                    <!-- Image wrapper div -->
-                    <!-- <div class="col s4">
-                    <img id="imgPreview" src="" alt="preview" class="responsive-img">
-                </div> -->
-                    <!-- Dog diet info -->
-                    <!-- <div class="row">
-                    <div class="col s12">
-                        <h4 class="center-align">
-                            Clara should be fed daily:
-                        </h4>
-                        <ul>
-                            <li class="center-align">
-                                <h5>
-                                    1 can of canned food
-                                </h5>
-                            </li>
-                            <li class="center-align">
-                                <h5>
-                                    2 cups of kibble
-                                </h5>
-                            </li>
-                        </ul>
-                        <h4 class="center-align">
-                            For 2 meals/day feed:
-                        </h4>
-                        <ul>
-                            <li class="center-align">
-                                <h5>
-                                    1/2 can of canned food
-                                </h5>
-                            </li>
-                            <li class="center-align">
-                                <h5>
-                                    1 cup of kibble
-                                </h5>
-                            </li>
-                        </ul>
-                    </div>
-                </div> -->
-                </div>
+                <!-- Dog info will generate here -->
             </div>
+        </div>
+        </div>
+        <!-- testing img preview -->
+        <img id="imgPreview" src="" alt="preview">
     </main>
+
+    <!-- div for map and all of its components -->
+    <div id="map-container container">
+        <div class="col s6 ">
+            <div class="row input-field ">
+                <div class=" col s10">
+                    <input id="zip-input" type="text" class="validate">
+                    <label for="zip-input" id="zip-input-status">Enter zip code for near by dog parks!</label>
+                </div>
+                <a class="waves-effect waves-light btn col s2" id="zip-input-button">Search</a>
+            </div>
+        </div>
+
+        <div id="map"></div>
+
+    </div>
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMvF_-po-_5NauKvu27lmuClGyHqgG9NU&callback=initMap"
+        defer>
+        </script>
     <script src="./assets/js/script.js"></script>
 </body>
 
