@@ -190,7 +190,7 @@ function reloadDogs() {
     noDogTab.setAttribute("class", "tab col s2");
     noDogTab.innerHTML =
       `
-    <a>Create a Dog Profile!</a>
+    <a class ="teal-text">Create a Dog Profile!</a>
     `;
     tabs.appendChild(noDogTab);
 
@@ -203,7 +203,7 @@ function reloadDogs() {
       `
     <h4 class="center-align">You haven't added any dogs!</h4>
     <p class="center-align">
-      <a class="btn-large waves-effect waves-light modal-trigger red" id="placeholderBtn" href="#modal1">
+      <a class="btn-large waves-effect waves-light modal-trigger indigo lighten-2" id="placeholderBtn" href="#modal1">
         <img src="./assets/images/add-dog.png" alt="" height="30px" class="add-dog">
         Click here to add a dog profile!
       </a>
@@ -270,6 +270,7 @@ function reloadDogs() {
     tab.setAttribute("class", "tab col s2");
     var tabLink = document.createElement("a");
     tabLink.setAttribute("href", "#dog" + (i + 1));
+    // tabLink.setAttribute("class", "teal-text");
     tabLink.innerHTML = `${dogs[i].name}`;
     tab.appendChild(tabLink);
     tabs.appendChild(tab);
@@ -283,14 +284,16 @@ function reloadDogs() {
     // Dog info is populated into dogInfo div
     dogInfo.innerHTML =
       `
-      <div class="col s8">
-        <h5 class="center-align">Name: ${dogs[i].name}</h5>
-        <h5 class="center-align">Weight: ${weights[dogs[i].weight]}</h5>
-        <h5 class="center-align">Fun Fact: ${dogs[i].funFact}</h5>
-        <h5 class="center-align">To achieve health and happiness, ${dogs[i].name} needs to ${diets[dogs[i].dietGoal]}.</h5>
-      </div>
-      <div class="col s4">
-        <img id="imgPreview" src="${imageDataUrl}" alt="preview" class="responsive-img"> <!-- testing img preview -->
+      <div class="dog-info">
+        <div class="col m7 center">
+         <h5>Name: ${dogs[i].name}</h5>
+         <h5>Weight: ${weights[dogs[i].weight]}</h5>
+         <h5>Fun Fact: ${dogs[i].funFact}</h5>
+         <h5>To achieve health and happiness, ${dogs[i].name} needs to ${diets[dogs[i].dietGoal]}.</h5>
+       </div>
+       <div class="col m5 dog-image">
+         <img id="imgPreview" src="${imageDataUrl}" alt="preview" class="responsive-img"> 
+        </div>
       </div>
       <div class="row">
         <div class="col s12">
@@ -300,7 +303,7 @@ function reloadDogs() {
             <ul>
               <li class="center-align">
                 <h5>
-                  ${secondaryString} can of canned food (${products[dogs[i].food2].brandName})
+                  ${secondaryString} cans of canned food (${products[dogs[i].food2].brandName})
                 </h5>
               </li>
               <li class="center-align">
@@ -315,12 +318,12 @@ function reloadDogs() {
           <ul>
             <li class="center-align">
               <h5>
-                ${secondaryHalfString} can of canned food
+                ${secondaryHalfString} cans of canned food
               </h5>
             </li>
             <li class="center-align">
               <h5>
-                ${primaryHalfString} cup of kibble
+                ${primaryHalfString} cups of kibble
               </h5>
             </li>
           </ul>
@@ -339,20 +342,7 @@ function selectLast() {
   console.log('this function is running')
 }
 
-// Test image preview
-// document.addEventListener("DOMContentLoaded", () => {
-//   var imageDataUrl = localStorage.getItem("photo");
-
-//   if (imageDataUrl) {
-//     document.querySelector("#imgPreview").setAttribute("src", imageDataUrl);
-//   }
-// });
-
-
 
 // clearing local storage when you remove a dog's profile
 // form field validations
 // do input validation
-
-// style modal
-// style main page

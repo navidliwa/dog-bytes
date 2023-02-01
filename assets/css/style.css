@@ -3,9 +3,17 @@
     border-radius: 10px;
 }
 
+img {
+    border-radius: 10px;
+}
+
 .nav-wrapper {
     display: flex;
     flex-flow: row wrap;
+}
+
+.modal {
+    border-radius: 10px;
 }
 
 /* Add dog button styling */
@@ -22,9 +30,31 @@
     filter: invert(100%);
 }
 
-/* map size */
-#map {
-    height: 245px;
+/* dog info and picture styling */
+.dog-info {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 10px;
+}
+
+.dog-image {
+    margin: auto;
+}
+
+/* Tab text styling */
+.tabs .indicator {
+    background-color: teal;
+}
+.tabs .tab a {
+    color: teal;
+}
+
+.tabs .tab a.active {
+    color: teal;
+}
+
+.tabs .tab a:hover {
+    color: teal;
 }
 
 /* API styling */
@@ -32,6 +62,7 @@
     display: flex;
     flex-wrap: nowrap;    
     margin-left: 5px auto;
+    padding: 10px;
 }
 
 .api-add-ons {
@@ -40,15 +71,19 @@
     height: 400px;  
     border-radius: 10px;
 }
-.api-add-ons label {
-    margin-top: 10px;  
-}
 
 .api-add-ons img {
     max-height: 300px;
     margin-top: 15px;
-    max-width: 250px;
-    padding-right: 10px;
+}
+
+#zip-input {
+    margin: 0;
+}
+
+#map {
+    height: 235px;
+    border-radius: 10px;
 }
 
 /* Media breakpoint styling */
@@ -57,8 +92,20 @@
         flex-wrap: wrap;
     }
 
+    .api-add-ons {
+        margin: 10px 0;
+    }
+
     .api-add-ons img {
         padding-right: 0;
+    }
+
+    .dog-info {
+        flex-wrap: wrap;
+    }
+
+    .dog-image {
+        margin: 10px 40px;
     }
     
 }

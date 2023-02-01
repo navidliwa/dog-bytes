@@ -16,14 +16,14 @@
     <title>DogBytes</title>
 </head>
 
-<body>
+<body class="indigo lighten-5">
     <!-- Page header with app name: DogBytes -->
-    <nav>
+    <nav class="indigo lighten-3">
         <div class="nav-wrapper">
             <a href="#" class="brand-logo center">DogBytes</a>
             <!-- Add new dog profile button -->
-            <a class="btn-floating btn-large waves-effect waves-light modal-trigger red" href="#modal1"><img
-                    src="./assets/images/add-dog.png" alt="" height="40px" class="add-dog"></a>
+            <a class="btn-floating btn-large waves-effect waves-light modal-trigger indigo lighten-2" href="#modal1"><img
+                    src="./assets/images/add-dog.png" alt="" height="35px" class="add-dog"></a>
         </div>
     </nav>
     <main>
@@ -37,8 +37,8 @@
                 </div>
                 <!-- Dog name input fied -->
                 <div class="input-field col s6">
-                    <input id="dog-name" type="text" class="validate">
-                    <label for="dog-name">Dog Name</label>
+                    <input id="dog-name" type="text" class="validate" placeholder="Dog Name">
+                    <!-- <label for="dog-name">Dog Name</label> -->
                 </div>
                 <!-- Dog weight selection -->
                 <div class="input-field col s6">
@@ -51,13 +51,11 @@
                         <option value="4">51 - 75 lbs</option>
                         <option value="5">76 - 100 lbs</option>
                     </select>
-                    <label>Dog Weight</label>
                 </div>
 
                 <!-- Fun fact input field -->
                 <div class="input-field col s6">
-                    <input id="fun-fact" type="text" class="validate">
-                    <label for="fun-fact">Fun Fact!</label>
+                    <input id="fun-fact" type="text" class="validate" placeholder="Fun fact about your dog!">
                 </div>
                 <!-- Diet selection -->
                 <div class="input-field col s6">
@@ -67,11 +65,10 @@
                         <option value="1">Maintain Weight</option>
                         <option value="2">Gain Weight</option>
                     </select>
-                    <label>Diet Preference</label>
                 </div>
                 <!-- Dog photo file upload -->
                 <div class="file-field input-field">
-                    <div class="btn">
+                    <div class="btn waves-effect waves-light indigo lighten-2">
                         <span>Choose Photo</span>
                         <input type="file" id="photo">
                     </div>
@@ -83,7 +80,7 @@
             </div>
             <!-- Next button -->
             <div class="modal-footer">
-                <a class="modal-close waves-effect waves-green btn-flat modal-trigger" href="#modal2">Next</a>
+                <a class="modal-close waves-effect waves-light btn modal-trigger indigo lighten-2" href="#modal2">Next</a>
             </div>
         </div>
         <!-- 2nd dog info input container div -->
@@ -97,12 +94,10 @@
                         <option value="0">Purina One Chicken and Rice</option>
                         <option value="3">Blue Buffalo Life Protection Formula</option>
                     </select>
-                    <label>Kibble</label>
                 </div>
                 <!-- Food 1 percentage allocation input field -->
                 <div class="input-field col s6">
-                    <input id="food-1-percent" type="text" class="validate">
-                    <label for="food-1-percent">Allocation Percentage</label>
+                    <input id="food-1-percent" type="text" class="validate" placeholder="Allocation Percentage">
                 </div>
                 <!-- Food 2 input field -->
                 <div class="input-field col s6">
@@ -111,17 +106,15 @@
                         <option value="2">Blue Buffalo Chicken Dinner</option>
                         <option value="1">Purina One Beef and Brown Rice</option>
                     </select>
-                    <label>Canned Food</label>
                 </div>
                 <!-- Food 2 percentage allocation input field -->
                 <div class="input-field col s6">
-                    <input id="food-2-percent" type="text" class="validate">
-                    <label for="food-2-percent">Allocation Percentage</label>
+                    <input id="food-2-percent" type="text" class="validate" placeholder="Allocation Percentage">
                 </div>
             </div>
             <!-- Save button -->
             <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat save-dog">Save</a>
+                <a href="#!" class="modal-close waves-effect waves-light btn indigo lighten-2 save-dog">Save</a>
             </div>
         </div>
         <!-- Dog tabs and profile container div -->
@@ -129,69 +122,53 @@
             <div class="container">
                 <!-- Tabs container div -->
                 <div class="col s12">
-                    <ul id="tabs" class="tabs">
+                    <ul id="tabs" class="tabs grey lighten-5">
                         <!-- Tabs will generate here -->
                     </ul>
                 </div>
             </div>
             <!-- Dog profiles wrapper div -->
-            <div id="dogProfiles" class="container row z-depth-2">
+            <div id="dogProfiles" class="container row z-depth-2 grey lighten-5">
                 <!-- Dog info will generate here -->
             </div>
         </div>
         </div>
+
+        <!-- APIs -->
         <div class="api-container container center row">
-             <!--Random Image Button-->
-            <div class="api-add-ons z-depth-2 col m6 ">
-                <label for="RandomButton" class="col s12">Want to see  a random dog image?</label>
-                <a class="waves-effect waves-light btn col s12" id="RandomButton">Click Here!
-                </a>
+            <!--Random Image Button-->
+            <div class="api-add-ons z-depth-2 col m6 grey lighten-5">
+                <div class="col s12">
+                    <label for="RandomButton">Want to see a random dog image?</label>
+                    <a class="waves-effect waves-light btn col s12 indigo lighten-2" id="RandomButton">Click Here!
+                    </a>
+                </div>
                 <img class="responsive-img" id="imgPreview" src="">
             </div>
             <!-- div for map and all of its components -->
-            <!-- <div class="api-add-ons z-depth-2 col m6" id="map-container container">
-                <div>
-                    <div class="input-field">
-                        <div>
-                            <input id="zip-input" type="text" class="validate">
-                            <label for="zip-input" id="zip-input-status">Enter zip code for near by dog parks!</label>
-                        </div>
-                        <a class="waves-effect waves-light btn" id="zip-input-button">Search</a>
+            <div class="api-add-ons z-depth-2 col m6 s12 grey lighten-5" id="map-container container">
+                <div class="input-field">
+                    <div class="col s12">
+                        <input id="zip-input" type="text" class="validate" placeholder="Enter your zip code">
+                        <label for="zip-input" id="zip-input-status">Want to go for a walk?<br>Find nearby parks and dog
+                            parks!</label>
                     </div>
+                    <a class="waves-effect waves-light btn indigo lighten-2" id="zip-input-button">Search</a>
                 </div>
                 <div id="map"></div>
-            </div> -->
-
-            <div class="api-add-ons z-depth-2 col m6" id="map-container container">
-                
-                    <div class="input-field">
-                        <div class="col s12">
-                            <input id="zip-input" type="text" class="validate" placeholder="Enter your zip code">
-                            <label for="zip-input" id="zip-input-status">Find nearby parks and dog parks!</label>
-                        </div>
-                        <a class="waves-effect waves-light btn" id="zip-input-button">Search</a>
-                    </div>
-                   
-                <div id="map"></div>        
             </div>
         </div>
-        <footer class="page-footer z-depth-2 col s12 center">This page is for coding education purposes only. This data should not be used as nutritional advice for your dog.</footer>
+        <footer class="page-footer z-depth-2 col s12 center indigo lighten-3">This page is for coding educational purposes only. This data
+            should not be used as nutritional advice for your dog.</footer>
     </main>
-
-    <!-- div for map and all of its components -->
-  
 
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMvF_-po-_5NauKvu27lmuClGyHqgG9NU&libraries=places&callback=initMap"></script>
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMvF_-po-_5NauKvu27lmuClGyHqgG9NU&libraries=places&callback=initMap"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
-
-<!-- 
-    create maps widget
-    render dog photos
- -->
