@@ -7,6 +7,7 @@
     <!--Import materialize.css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="icon" href="./assets/images/icon.png">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -148,7 +149,7 @@
                 <img class="responsive-img" id="imgPreview" src="">
             </div>
             <!-- div for map and all of its components -->
-            <div class="api-add-ons z-depth-2 col m6" id="map-container container">
+            <!-- <div class="api-add-ons z-depth-2 col m6" id="map-container container">
                 <div>
                     <div class="input-field">
                         <div>
@@ -159,18 +160,32 @@
                     </div>
                 </div>
                 <div id="map"></div>
+            </div> -->
+
+            <div class="api-add-ons z-depth-2 col m6" id="map-container container">
+                
+                    <div class="input-field">
+                        <div class="col s12">
+                            <input id="zip-input" type="text" class="validate" placeholder="Enter your zip code">
+                            <label for="zip-input" id="zip-input-status">Find nearby parks and dog parks!</label>
+                        </div>
+                        <a class="waves-effect waves-light btn" id="zip-input-button">Search</a>
+                    </div>
+                   
+                <div id="map"></div>        
             </div>
         </div>
+        <footer class="page-footer z-depth-2 col s12 center">This page is for coding education purposes only. This data should not be used as nutritional advice for your dog.</footer>
     </main>
 
+    <!-- div for map and all of its components -->
+  
 
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMvF_-po-_5NauKvu27lmuClGyHqgG9NU&callback=initMap"
-        defer>
-        </script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMvF_-po-_5NauKvu27lmuClGyHqgG9NU&libraries=places&callback=initMap"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 
