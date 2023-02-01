@@ -69,7 +69,7 @@ function randomdog() {
 
 document.addEventListener("DOMContentLoaded", function () {
   randomdog();
-  button.addEventListener("click", function(){
+  button.addEventListener("click", function () {
     randomdog();
   });
 
@@ -119,11 +119,11 @@ function getDogParks(lat, lng) {
   service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, callback);
 }
-function callback(results, status){
-  if(status == google.maps.places.PlacesServiceStatus.OK){
-      console.log(results)
-      generateMarkers(results)
-    }
+function callback(results, status) {
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    console.log(results)
+    generateMarkers(results)
+  }
 }
 function generateMarkers(data) {
   //clear previous markers
@@ -137,7 +137,7 @@ function generateMarkers(data) {
     markers.push(new google.maps.Marker({
       position: data[i].geometry.location,
       map: map,
-      label: (i + 1)+"", //empty quotes to turn it into a string
+      label: (i + 1) + "", //empty quotes to turn it into a string
       title: data[i].name
     }))
   }
@@ -221,8 +221,8 @@ function reloadDogs() {
     console.log(primaryFoodServings)
     var secondaryFoodServings = products[dogs[i].food2][dogs[i].weight] * dogs[i].food2percent / 100
     console.log(secondaryFoodServings)
-    var primaryHalf = primaryFoodServings/2
-    var secondaryHalf = secondaryFoodServings/2
+    var primaryHalf = primaryFoodServings / 2
+    var secondaryHalf = secondaryFoodServings / 2
     if (dogs[i].dietGoal == 0) {
       primaryFoodServings = primaryFoodServings * 0.9
       secondaryFoodServings = secondaryFoodServings * 0.9
@@ -270,7 +270,6 @@ function reloadDogs() {
     tab.setAttribute("class", "tab col s2");
     var tabLink = document.createElement("a");
     tabLink.setAttribute("href", "#dog" + (i + 1));
-    // tabLink.setAttribute("class", "teal-text");
     tabLink.innerHTML = `${dogs[i].name}`;
     tab.appendChild(tabLink);
     tabs.appendChild(tab);

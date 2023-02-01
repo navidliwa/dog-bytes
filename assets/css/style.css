@@ -45,6 +45,7 @@ img {
 .tabs .indicator {
     background-color: teal;
 }
+
 .tabs .tab a {
     color: teal;
 }
@@ -60,15 +61,15 @@ img {
 /* API styling */
 .api-container {
     display: flex;
-    flex-wrap: nowrap;    
+    flex-wrap: nowrap;
     margin-left: 5px auto;
     padding: 10px;
 }
 
 .api-add-ons {
     padding: 15px;
-    margin: 10px;  
-    height: 400px;  
+    margin: 10px;
+    height: 400px;
     border-radius: 10px;
 }
 
@@ -107,7 +108,7 @@ img {
     .dog-image {
         margin: 10px 40px;
     }
-    
+
 }
 
 /* Footer styling */
