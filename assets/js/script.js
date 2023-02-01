@@ -69,7 +69,7 @@ function randomdog() {
 
 document.addEventListener("DOMContentLoaded", function () {
   randomdog();
-  button.addEventListener("click", function(){
+  button.addEventListener("click", function () {
     randomdog();
   });
 
@@ -88,7 +88,7 @@ function initMap() {
 }
 //event listener for map search button
 $('#zip-input-button').on('click', function () {
-  $("#zip-input-status").text("Enter zip code for near by dog parks!")
+  $("#zip-input-status").text("Find nearby parks and dog parks!")
   var searchTerm = $("#zip-input").val()
   var searchLat;
   var searchLng;
@@ -119,11 +119,11 @@ function getDogParks(lat, lng) {
   service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, callback);
 }
-function callback(results, status){
-  if(status == google.maps.places.PlacesServiceStatus.OK){
-      console.log(results)
-      generateMarkers(results)
-    }
+function callback(results, status) {
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    console.log(results)
+    generateMarkers(results)
+  }
 }
 function generateMarkers(data) {
   //clear previous markers
@@ -137,7 +137,7 @@ function generateMarkers(data) {
     markers.push(new google.maps.Marker({
       position: data[i].geometry.location,
       map: map,
-      label: (i + 1)+"", //empty quotes to turn it into a string
+      label: (i + 1) + "", //empty quotes to turn it into a string
       title: data[i].name
     }))
   }
@@ -190,7 +190,7 @@ function reloadDogs() {
     noDogTab.setAttribute("class", "tab col s2");
     noDogTab.innerHTML =
       `
-    <a>Create a Dog Profile!</a>
+    <a class ="teal-text">Create a Dog Profile!</a>
     `;
     tabs.appendChild(noDogTab);
 
@@ -203,7 +203,7 @@ function reloadDogs() {
       `
     <h4 class="center-align">You haven't added any dogs!</h4>
     <p class="center-align">
-      <a class="btn-large waves-effect waves-light modal-trigger red" id="placeholderBtn" href="#modal1">
+      <a class="btn-large waves-effect waves-light modal-trigger indigo lighten-2" id="placeholderBtn" href="#modal1">
         <img src="./assets/images/add-dog.png" alt="" height="30px" class="add-dog">
         Click here to add a dog profile!
       </a>
@@ -221,8 +221,8 @@ function reloadDogs() {
     console.log(primaryFoodServings)
     var secondaryFoodServings = products[dogs[i].food2][dogs[i].weight] * dogs[i].food2percent / 100
     console.log(secondaryFoodServings)
-    var primaryHalf = primaryFoodServings/2
-    var secondaryHalf = secondaryFoodServings/2
+    var primaryHalf = primaryFoodServings / 2
+    var secondaryHalf = secondaryFoodServings / 2
     if (dogs[i].dietGoal == 0) {
       primaryFoodServings = primaryFoodServings * 0.9
       secondaryFoodServings = secondaryFoodServings * 0.9
@@ -283,15 +283,16 @@ function reloadDogs() {
     // Dog info is populated into dogInfo div
     dogInfo.innerHTML =
       `
-      <div class="col s8">
-        <h5 class="center-align">Name: ${dogs[i].name}</h5>
-        <h5 class="center-align">Weight: ${dogs[i].weight}lbs</h5>
-        <h5 class="center-align">Food choice: ${dogs[i].food1}, ${dogs[i].food2}</h5>
-        <h5 class="center-align">Fun Fact: ${dogs[i].funFact}</h5>
-        <h5 class="center-align">To achieve health and happiness, ${dogs[i].name} needs to ${diets[dogs[i].dietGoal]}.</h5>
-      </div>
-      <div class="col s4">
-        <img id="imgPreview" src="${imageDataUrl}" alt="preview" class="responsive-img"> <!-- testing img preview -->
+      <div class="dog-info">
+        <div class="col m7 center">
+         <h5>Name: ${dogs[i].name}</h5>
+         <h5>Weight: ${weights[dogs[i].weight]}</h5>
+         <h5>Fun Fact: ${dogs[i].funFact}</h5>
+         <h5>To achieve health and happiness, ${dogs[i].name} needs to ${diets[dogs[i].dietGoal]}.</h5>
+       </div>
+       <div class="col m5 dog-image">
+         <img id="imgPreview" src="${imageDataUrl}" alt="preview" class="responsive-img"> 
+        </div>
       </div>
       <div class="row">
         <div class="col s12">
@@ -301,12 +302,12 @@ function reloadDogs() {
             <ul>
               <li class="center-align">
                 <h5>
-                  ${products[dogs[i].food2].brandName} can of canned food
+                  ${secondaryString} cans of canned food (${products[dogs[i].food2].brandName})
                 </h5>
               </li>
               <li class="center-align">
                 <h5>
-                  ${products[dogs[i].food1].brandName} cups of kibble
+                  ${primaryString} cups of kibble (${products[dogs[i].food1].brandName})
                 </h5>
               </li>
             </ul>
@@ -316,12 +317,12 @@ function reloadDogs() {
           <ul>
             <li class="center-align">
               <h5>
-                ${secondaryHalfString} can of canned food
+                ${secondaryHalfString} cans of canned food
               </h5>
             </li>
             <li class="center-align">
               <h5>
-                ${primaryHalfString} cup of kibble
+                ${primaryHalfString} cups of kibble
               </h5>
             </li>
           </ul>
@@ -340,20 +341,7 @@ function selectLast() {
   console.log('this function is running')
 }
 
-// Test image preview
-document.addEventListener("DOMContentLoaded", () => {
-  var imageDataUrl = localStorage.getItem("photo");
-
-  if (imageDataUrl) {
-    document.querySelector("#imgPreview").setAttribute("src", imageDataUrl);
-  }
-});
-
-
 
 // clearing local storage when you remove a dog's profile
 // form field validations
 // do input validation
-
-// style modal
-// style main page

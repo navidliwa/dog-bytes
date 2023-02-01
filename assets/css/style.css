@@ -1,5 +1,10 @@
 .container {
-    margin-top: 1rem;
+    margin: 15px auto 0 auto;
+    border-radius: 10px;
+}
+
+img {
+    border-radius: 10px;
 }
 
 .nav-wrapper {
@@ -7,6 +12,11 @@
     flex-flow: row wrap;
 }
 
+.modal {
+    border-radius: 10px;
+}
+
+/* Add dog button styling */
 .btn-floating {
     position: absolute;
     right: 2%;
@@ -20,13 +30,88 @@
     filter: invert(100%);
 }
 
-#imgPreview {
-    width:400px;
-    height:600px;
-    object-fit: contain;
+/* dog info and picture styling */
+.dog-info {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 10px;
 }
-/* map size */
-#map {
+
+.dog-image {
+    margin: auto;
+}
+
+/* Tab text styling */
+.tabs .indicator {
+    background-color: teal;
+}
+
+.tabs .tab a {
+    color: teal;
+}
+
+.tabs .tab a.active {
+    color: teal;
+}
+
+.tabs .tab a:hover {
+    color: teal;
+}
+
+/* API styling */
+.api-container {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: 5px auto;
+    padding: 10px;
+}
+
+.api-add-ons {
+    padding: 15px;
+    margin: 10px;
     height: 400px;
-    width: 100%; 
-  }
+    border-radius: 10px;
+}
+
+.api-add-ons img {
+    max-height: 300px;
+    margin-top: 15px;
+}
+
+#zip-input {
+    margin: 0;
+}
+
+#map {
+    height: 235px;
+    border-radius: 10px;
+}
+
+/* Media breakpoint styling */
+@media screen and (max-width: 600px) {
+    .api-container {
+        flex-wrap: wrap;
+    }
+
+    .api-add-ons {
+        margin: 10px 0;
+    }
+
+    .api-add-ons img {
+        padding-right: 0;
+    }
+
+    .dog-info {
+        flex-wrap: wrap;
+    }
+
+    .dog-image {
+        margin: 10px 40px;
+    }
+
+}
+
+/* Footer styling */
+.page-footer {
+    padding: 10px;
+}
