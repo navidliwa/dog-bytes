@@ -12,10 +12,13 @@ The project was a great opportunity to get exposed to some of the tools availabl
 
 --Add your dog's information by clickiing the button at the top right
 ![Add dog button](/assets/images/demo_btn.PNG)
+
 --Switch between information saved for your various furry friends
 ![Tabs](/assets/images/demo_tabs.PNG)
+
 --Use the embedded Google Maps search to find a nearby place to walk the dog
 ![Map](/assets/images/demo_map.PNG)
+
 --Generate as many random photos of dogs as your heart desires
 ![Random Images](/assets/images/demo_random.PNG)
 
