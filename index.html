@@ -42,7 +42,7 @@
                 <!-- Dog weight selection -->
                 <div class="input-field col s6">
                     <select id="dog-weight">
-                        <option value="" disabled selected>Sellect Dog Weight</option>
+                        <option value="" disabled selected>Select Dog Weight</option>
                         <option value="0">3 - 12 lbs</option>
                         <option value="1">13 - 20 lbs</option>
                         <option value="2">21 - 35 lbs</option>
@@ -134,33 +134,36 @@
                 </div>
             </div>
             <!-- Dog profiles wrapper div -->
-            <div id="dogProfiles" class="container row z-depth-3">
+            <div id="dogProfiles" class="container row z-depth-2">
                 <!-- Dog info will generate here -->
             </div>
         </div>
         </div>
-        <!--Random Image Button-->
-        <div>
-            <img id="imgPreview" src="">
-            <a class="btn-large waves-effect waves-light modal-trigger red" id="RandomButton">Click Here For A Random Dog Image!</a>
+        <div class="api-container container center row">
+             <!--Random Image Button-->
+            <div class="api-add-ons z-depth-2 col m6 ">
+                <label for="RandomButton" class="col s12">Want to see  a random dog image?</label>
+                <a class="waves-effect waves-light btn col s12" id="RandomButton">Click Here!
+                </a>
+                <img class="responsive-img" id="imgPreview" src="">
+            </div>
+            <!-- div for map and all of its components -->
+            <div class="api-add-ons z-depth-2 col m6" id="map-container container">
+                <div>
+                    <div class="input-field">
+                        <div>
+                            <input id="zip-input" type="text" class="validate">
+                            <label for="zip-input" id="zip-input-status">Enter zip code for near by dog parks!</label>
+                        </div>
+                        <a class="waves-effect waves-light btn" id="zip-input-button">Search</a>
+                    </div>
+                </div>
+                <div id="map"></div>
+            </div>
         </div>
     </main>
 
-    <!-- div for map and all of its components -->
-    <div id="map-container container">
-        <div class="col s6 ">
-            <div class="row input-field ">
-                <div class=" col s10">
-                    <input id="zip-input" type="text" class="validate">
-                    <label for="zip-input" id="zip-input-status">Enter zip code for near by dog parks!</label>
-                </div>
-                <a class="waves-effect waves-light btn col s2" id="zip-input-button">Search</a>
-            </div>
-        </div>
 
-        <div id="map"></div>
-
-    </div>
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
