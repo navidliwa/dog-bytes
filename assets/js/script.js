@@ -12,7 +12,7 @@ var service
 
 var products = [
   {
-    brandName: "Purina One Chicken and Rice (kibble)",
+    brandName: "Purina One Chicken and Rice",
     0: 0.5,
     1: 1.25,
     2: 1.75,
@@ -20,7 +20,7 @@ var products = [
     4: 3.25,
     5: 4.25,
   }, {
-    brandName: "Purina One Beef and Brown Rice (canned)",
+    brandName: "Purina One Beef and Brown Rice",
     0: 0.75,
     1: 1.25,
     2: 1.75,
@@ -28,7 +28,7 @@ var products = [
     4: 3.5,
     5: 4.5,
   }, {
-    brandName: "Blue Buffalo Chicken Dinner (canned)",
+    brandName: "Blue Buffalo Chicken Dinner",
     0: 0.75,
     1: 1.5,
     2: 2.25,
@@ -36,7 +36,7 @@ var products = [
     4: 5.25,
     5: 6.5,
   }, {
-    brandName: "Blue Buffalo Life Protection Formula (kibble)",
+    brandName: "Blue Buffalo Life Protection Formula",
     0: 0.75,
     1: 1.5,
     2: 2,
@@ -53,6 +53,7 @@ this.photoData = "";
 
 var randomimg = "";
 var preview = document.getElementById('imgPreview');
+var button = document.getElementById('RandomButton')
 
 function randomdog() {
 
@@ -68,6 +69,10 @@ function randomdog() {
 
 document.addEventListener("DOMContentLoaded", function () {
   randomdog();
+  button.addEventListener("click", function(){
+    randomdog();
+  });
+
 });
 
 //code for initializing the google map (automatically called by the library)
@@ -216,12 +221,18 @@ function reloadDogs() {
     console.log(primaryFoodServings)
     var secondaryFoodServings = products[dogs[i].food2][dogs[i].weight] * dogs[i].food2percent / 100
     console.log(secondaryFoodServings)
+    var primaryHalf = primaryFoodServings/2
+    var secondaryHalf = secondaryFoodServings/2
     if (dogs[i].dietGoal == 0) {
       primaryFoodServings = primaryFoodServings * 0.9
       secondaryFoodServings = secondaryFoodServings * 0.9
+      primaryHalf = primaryHalf * 0.9
+      secondaryHalf = secondaryHalf * 0.9
     } else if (dogs[i].dietGoal == 2) {
       primaryFoodServings = primaryFoodServings * 1.1
       secondaryFoodServings = secondaryFoodServings * 1.1
+      primaryHalf = primaryHalf * 1.1
+      secondaryHalf = secondaryHalf * 1.1
     }
     console.log(primaryFoodServings)
     console.log(secondaryFoodServings)
@@ -250,6 +261,8 @@ function reloadDogs() {
 
     // add the image?
 
+    var primaryHalfString = primaryHalf.toFixed(2)
+    var secondaryHalfString = secondaryHalf.toFixed(2)
 
     // Adds tabs according to number of profiles added
     var tabs = document.querySelector("#tabs");
@@ -275,6 +288,7 @@ function reloadDogs() {
         <h5 class="center-align">Weight: ${dogs[i].weight}lbs</h5>
         <h5 class="center-align">Food choice: ${dogs[i].food1}, ${dogs[i].food2}</h5>
         <h5 class="center-align">Fun Fact: ${dogs[i].funFact}</h5>
+        <h5 class="center-align">To achieve health and happiness, ${dogs[i].name} needs to ${diets[dogs[i].dietGoal]}.</h5>
       </div>
       <div class="col s4">
         <img id="imgPreview" src="${imageDataUrl}" alt="preview" class="responsive-img"> <!-- testing img preview -->
@@ -287,12 +301,12 @@ function reloadDogs() {
             <ul>
               <li class="center-align">
                 <h5>
-                  VARIABLE HERE can of canned food
+                  ${products[dogs[i].food2].brandName} can of canned food
                 </h5>
               </li>
               <li class="center-align">
                 <h5>
-                  VARIABLE HERE cups of kibble
+                  ${products[dogs[i].food1].brandName} cups of kibble
                 </h5>
               </li>
             </ul>
@@ -302,12 +316,12 @@ function reloadDogs() {
           <ul>
             <li class="center-align">
               <h5>
-                VARIABLE HERE can of canned food
+                ${secondaryHalfString} can of canned food
               </h5>
             </li>
             <li class="center-align">
               <h5>
-                VARIABLE HERE cup of kibble
+                ${primaryHalfString} cup of kibble
               </h5>
             </li>
           </ul>
