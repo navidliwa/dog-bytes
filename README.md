@@ -1,5 +1,7 @@
 # Dog-Bytes
 
+Deployed Page URL: [https://navidliwa.github.io/dog-bytes/](https://navidliwa.github.io/dog-bytes/)
+
 ![Main Page](/assets/images/demo_1.PNG)
 
 ## Description
