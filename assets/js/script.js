@@ -179,6 +179,9 @@ $('.save-dog').on('click', function () {
   location.reload();
 })
 
+
+
+
 function reloadDogs() {
   var dogs = JSON.parse(localStorage.getItem("dogs"))
   console.log(dogs)
@@ -275,7 +278,7 @@ function reloadDogs() {
     tabs.appendChild(tab);
 
     // Adds dog info sections according to number of profiles added
-    var imageDataUrl = localStorage.getItem("photo");
+    var imageDataUrl = dogs[i].photo;
     var dogProfiles = document.querySelector("#dogProfiles");
     var dogInfo = document.createElement("div");
     dogInfo.setAttribute("id", "dog" + (i + 1));
